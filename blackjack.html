@@ -1,32 +1,44 @@
+<! Johan Jaramillo, Cory Vitanza, Ryan Davis
+December 15,2023
+Final Project
+We pledge our honor that we have abided by the Stevens Honor System. >
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Blackjack Game</title>
-        <link rel="stylesheet" href="blackjack.css">
-    </head>
-    <body> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack Game</title>
+    <link rel="stylesheet" href="blackjack.css">
+</head>
+<body> 
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="cards.png" alt="Logo Image">
+        </a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="homepage.html">Home<span></span></a></li>
+                <li><a href="blackjack.html">Blackjack Game<span></span></a></li>
+                <li><a href="chipsorting.html">Chip Sorting<span></span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
         <h1>Blackjack Game</h1>
         <div id="game-container">
-            <button onclick="startGame()">Start Game</button>
-            <button id="hit" onclick="hit()">Hit</button>
-            <button id="stay" onclick="stay()">Stay</button>
-            <button id="play-again" onclick="playAgain()">Play Again</button>
+            <div id="button-container">
+                <button id="start-button" onclick="startGame()">Start Game</button>
+                <button id="hit" onclick="hit()">Hit</button>
+                <button id="stay" onclick="stay()">Stay</button>
+                <button id="play-again" onclick="playAgain()">Play Again</button>
+            </div>
+            <div id="gameOutput">
+            </div>
         </div>
-        
-        <div id="gameOutput">
-            <p class="hand-text"> Your Hand is: </p>
-        </div>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="homepage.html">Homepage</a></li>
-                    <li><a href="blackjack.html">Blackjack Game</a></li>
-                    <li><a href="chipsorting.html">Homepage</a></li>
-                </ul>
-            </nav>
-        </header>
-        <script src="blackjack.js"></script>
-    </body>
+    </section>
+
+    <script src="blackjack.js"></script>
+</body>
 </html>

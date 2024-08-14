@@ -1,4 +1,7 @@
-
+/* Johan Jaramillo, Cory Vitanza, Ryan Davis
+December 15,2023
+Final Project
+We pledge our honor that we have abided by the Stevens Honor System. */
 let Winner;
 
 const suits = ['C', 'S', 'H', 'D'];
@@ -10,12 +13,10 @@ let computer_hand = [];
 let playing = false;
 
 const outputElement = document.getElementById('gameOutput');
-const startButton = document.querySelector('#game-container button');
+const startButton = document.querySelector('#start-button');
 const hitButton = document.getElementById('hit');
 const stayButton = document.getElementById('stay');
 const playAgainButton = document.getElementById('play-again');
-
-
 
 function createCardImageElement(card) {
     const img = document.createElement('img');
@@ -24,7 +25,6 @@ function createCardImageElement(card) {
     img.alt = decodedCard;
     return img;
 }
-
 
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
@@ -152,10 +152,8 @@ function startGame() {
     deal(computer_hand);
     deal(computer_hand);
 
-    // Clear the content of the gameOutput div
     outputElement.innerHTML = '';
 
-    // Display the new hand
     outputElement.innerHTML += '<p>Your hand is: ';
     user_hand.forEach(card => outputElement.appendChild(createCardImageElement(card)));
     outputElement.innerHTML += ` : ${determineValue(user_hand)}</p>`;
@@ -185,4 +183,3 @@ function stay() {
         handlePlayerTurn('S');
     }
 }
-

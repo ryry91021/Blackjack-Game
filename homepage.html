@@ -1,41 +1,150 @@
+<! Johan Jaramillo, Cory Vitanza, Ryan Davis
+December 15,2023
+Final Project
+We pledge our honor that we have abided by the Stevens Honor System. >
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="'IE=edge">
-    <title>Homepage</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Online Casino</title>
     <link rel="stylesheet" href="homepage.css">
 </head>
 <body>
     <header class="header">
-        <a href="#" class="logo">Logo
-            <img src="logo.png" alt="Logo Image">
+        <a href="#" class="logo">
+            <img src="cards.png" alt="Logo Image">
         </a>
         <nav class="navbar">
             <ul>
-                <li><a href="index.html">Homepage<span></span></a></li>
+                <li><a href="homepage.html">Home<span></span></a></li>
                 <li><a href="blackjack.html">Blackjack Game<span></span></a></li>
                 <li><a href="chipsorting.html">Chip Sorting<span></span></a></li>
             </ul>
         </nav>
-
     </header>
+
     <section class="homepage-content">
-        <h1>Welcome to the Blackjack Game</h1>
-        <p>
-            Blackjack is an exciting card game where the goal is to get a hand value as close to 21 as possible without going over. 
-            Play against the dealer and see if you can beat the odds!
-        </p>
-        <p>
-            Instructions:
+        <h1>Welcome to Online Casino</h1>
+        <p>Immerse yourself in the thrilling world of our Online Casino! Whether you're a seasoned player or a novice, our platform offers a variety of exciting games and features to suit every taste.</p>
+
+        <p>Explore our diverse offerings, including a captivating Blackjack game where the objective is to get a hand value as close to 21 as possible without going over. Challenge the dealer and test your luck!</p>
+
+        <p>In addition to the Blackjack excitement, we provide a handy Chip Sorting page to assist you in organizing your casino chips efficiently. Enjoy the convenience of sorting your chips hassle-free.</p>
+
+        <button id="howToPlayButton" class="game-button">How to Play Blackjack</button>
+        <button id="gameInfoButton" class="game-button">Game Information</button>
+        <button id="rulesButton" class="game-button">Rules and Instructions</button>
+        <button id="chipsButton" class="game-button">Chip Sorting Algorithm</button>
+
+        <div id="howToPlaySection" class="game-section" style="display: none;">
+            <h2>How to Play Blackjack</h2>
+            <p><strong>Objective:</strong> Beat the dealer by having a hand value closer to 21 without exceeding it.</p>
+    
+            <p><strong>Card Values:</strong></p>
             <ul>
-                <li>Click "Start Game" to begin playing.</li>
-                <li>Click "Hit" to draw a new card or "Stay" to end your turn.</li>
-                <li>Try to get a hand value closer to 21 than the dealer without going over!</li>
+                <li>Number cards (2-10) are worth their face value.</li>
+                <li>Face cards (Jack, Queen, King) are each worth 10 points.</li>
+                <li>Aces can be worth either 1 or 11 points, depending on which value benefits the hand more.</li>
             </ul>
-        </p>
-        <a class="game-link" href="blackjack.html">Play Blackjack</a>
+        
+            <p><strong>Gameplay:</strong></p>
+            <ol>
+                <li><strong>Initial Deal:</strong>
+                    <ul>
+                        <li>Each player, including the dealer, is dealt two cards.</li>
+                        <li>Players' cards are usually dealt face up, while one of the dealer's cards is face up (upcard), and the other is face down (hole card).</li>
+                    </ul>
+                </li>
+                <li><strong>Player's Turn:</strong>
+                    <ul>
+                        <li>Players decide whether to "hit" (take another card) or "stand" (keep their current hand).</li>
+                        <li>Players can continue to hit until they decide to stand or until their hand exceeds 21, resulting in a bust.</li>
+                    </ul>
+                </li>
+                <li><strong>Dealer's Turn:</strong>
+                    <ul>
+                        <li>Once all players have completed their turn, the dealer reveals their hole card.</li>
+                        <li>The dealer must hit until their hand reaches at least 17 points.</li>
+                        <li>If the dealer busts, players who haven't busted win.</li>
+                    </ul>
+                </li>
+                <li><strong>Winning:</strong>
+                    <ul>
+                        <li>The player with a hand value closest to 21 without exceeding it wins.</li>
+                        <li>If a player has blackjack (an Ace and a 10-value card) and the dealer doesn't, the player usually receives a higher payout.</li>
+                    </ul>
+                </li>
+            </ol>
+    
+        </div>
+
+        <div id="gameInfoSection" class="game-section" style="display: none;">
+            <h2>Game Information</h2>
+            <ul>
+                <li>Click "Play Blackjack" to start the game.</li>
+                <li>Use the "Hit" button to draw a new card or the "Stay" button to end your turn.</li>
+                <li>The goal is to get a hand value closer to 21 than the dealer without going over.</li>
+            </ul>
+    
+        </div>
+
+        <div id="rulesSection" class="game-section" style="display: none;">
+            <h2>Rules and Instructions</h2>
+            <ol>
+                <li>Click "Play Blackjack" to start the game.</li>
+                <li>Use the "Hit" button to draw additional cards and improve your hand.</li>
+                <li>Use the "Stay" button to end your turn and let the dealer play their hand.</li>
+                <li>Aim for a hand value as close to 21 as possible without exceeding it.</li>
+                <li>If your hand exceeds 21, you bust and lose the round.</li>
+                <li>The dealer must hit until their hand reaches at least 17 points.</li>
+                <li>Winning is determined by having a hand value closer to 21 than the dealer without busting.</li>
+            </ol>    
+        </div>
+        <div id="chipsSection" class="game-section" style="display: none;">
+            <h2>Chip Sorting Algorithm</h2>
+            <p>Explore our Chip Sorting algorithm to efficiently organize your casino chips. It's a handy tool to help you keep track of your chip values and denominations.</p>
+
+            <p>Feel free to enjoy the various features of our Online Casino. Good luck and have a great time!</p>
+        </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var howToPlayButton = document.getElementById('howToPlayButton');
+            var gameInfoButton = document.getElementById('gameInfoButton');
+            var rulesButton = document.getElementById('rulesButton');
+            var chipsButton = document.getElementById('chipsButton');
+
+            var howToPlaySection = document.getElementById('howToPlaySection');
+            var gameInfoSection = document.getElementById('gameInfoSection');
+            var rulesSection = document.getElementById('rulesSection');
+            var chipsSection = document.getElementById('chipsSection');
+
+            howToPlayButton.addEventListener('click', function () {
+                toggleVisibility(howToPlaySection);
+            });
+
+            gameInfoButton.addEventListener('click', function () {
+                toggleVisibility(gameInfoSection);
+            });
+
+            rulesButton.addEventListener('click', function () {
+                toggleVisibility(rulesSection);
+            });
+            chipsButton.addEventListener('click', function () {
+                toggleVisibility(chipsSection);
+            });
+
+            function toggleVisibility(element) {
+                if (element.style.display === 'none') {
+                    element.style.display = 'block';
+                } else {
+                    element.style.display = 'none';
+                }
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,22 +1,99 @@
+<! Johan Jaramillo, Cory Vitanza, Ryan Davis
+December 15,2023
+Final Project
+We pledge our honor that we have abided by the Stevens Honor System. >
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="'viewport" content="width=device-width, initial-scale=1.0">
-        <title>Homepage</title>
-        <link rel="stylehseet", href="blackjack.css">
-        <script src="blackjack.css"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chip Sorting</title>
+    <link rel="stylesheet" href="chipss.css">
+</head>
+<body> 
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="cards.png" alt="Logo Image">
+        </a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="homepage.html">Home<span></span></a></li>
+                <li><a href="blackjack.html">Blackjack Game<span></span></a></li>
+                <li><a href="chipsorting.html">Chip Sorting<span></span></a></li>
+            </ul>
+        </nav>
+    </header>
 
-    </head>
-    <body> 
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="homepage.html">Homepage</a></li>
-                    <li><a href="blackjack.html">Blackjack Game</a></li>
-                    <li><a href="chipsorting.html">Homepage</a></li>
-                </ul>
-            </nav>
-        </header></body>
+    <section class="homepage-content">
+        <div class="center-content">
+            <button id="calculateChipsButton" class="game-button">Calculate Chips</button>
+            <div id="chipCalculationResults"></div>
+        </div>
+    </section>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var calculateChipsButton = document.getElementById('calculateChipsButton');
+    
+        calculateChipsButton.addEventListener('click', function () {
+            // Function to calculate chip distribution based on buy-in amount
+            function calculateChips(buyIn) {
+                const chipColors = [
+                    { color: 'white',  value: 1 },
+                    { color: 'red',    value: 5 },
+                    { color: 'blue',   value: 10 },
+                    { color: 'green',  value: 25 },
+                    { color: 'black',  value: 100 },
+                    { color: 'purple', value: 500 },
+                    { color: 'yellow', value: 1000 },
+                ];
+    
+                chipColors.sort((a, b) => b.value - a.value);
+    
+                let userHand = {};
+                let remainingBuyIn = buyIn;
+                let counter = 0;
+    
+                while (remainingBuyIn > 0 && counter < chipColors.length) {
+                    const chipColor = chipColors[counter];
+    
+                    if (remainingBuyIn >= chipColor.value) {
+                        const numChips = Math.floor(remainingBuyIn / chipColor.value);
+                        userHand[chipColor.color] = numChips;
+    
+                        remainingBuyIn -= numChips * chipColor.value;
+                    }
+    
+                    counter++;
+                }
+    
+                return { userHand, chipColors };
+            }
+    
+            // Prompt the user for the buy-in amount (minimum $1)
+            const buyInInput = prompt("Enter Buy-In amount (minimum $1): $");
+            const buyInAmount = parseFloat(buyInInput);
+    
+            if (!isNaN(buyInAmount) && buyInAmount >= 1) {
+                const { userHand, chipColors } = calculateChips(buyInAmount);
+    
+                // Display the user's hand with values
+                let resultsHTML = "<strong>User's Hand:</strong><br>";
+                for (const color in userHand) {
+                    const numChips = userHand[color];
+                    const chipValue = chipColors.find(chip => chip.color === color).value;
+                    const totalValue = numChips * chipValue;
+                    resultsHTML += `${numChips} ${color} chip(s) (Value: $${totalValue})<br>`;
+                }
+    
+                document.getElementById('chipCalculationResults').innerHTML = resultsHTML;
+            } else {
+                alert("Invalid input for the buy-in amount. Please try again.");
+            }
+        });
+    });
+    </script>
+    
+</body>
 </html>
-
